@@ -1,19 +1,9 @@
 FactoryBot.define do
-   timestamp = loop do
-      date = FFaker::Time.date.to_time
-      break date.strftime("%F %T") if date >= Date.today
-   end
-
-
-   factory :user do
-      uid          { FFaker::Lorem.word }
-      email        { FFaker::Internet.email }
-      name         { FFaker::Name.name }
-      nickname     { FFaker::Internet.user_name }
-      password     { FFaker::Internet.password }
-      provider     'email'
-      confirmed_at timestamp
-      created_at   timestamp
-      updated_at   timestamp
-   end
+  factory :form do
+    title { FFaker::Lorem.phrase }
+    description { FFaker::Lorem.phrase }
+    user
+    primary_color { "##{FFaker::Color.hex_code}" }
+    enable { FFaker::Boolean.maybe }
+  end
 end

@@ -29,12 +29,14 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+
   # Custom json helpers
   config.include Requests::JsonHelpers, type: :request
   # Custom Header helpers
   config.include Requests::HeaderHelpers, type: :request
 
   config.include Devise::Test::ControllerHelpers, type: :controller
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -50,7 +52,7 @@ RSpec.configure do |config|
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
   #
-  #     RSpec.describe UsersController, :type =&gt; :controller do
+  #     RSpec.describe UsersController, :type => :controller do
   #       # ...
   #     end
   #
